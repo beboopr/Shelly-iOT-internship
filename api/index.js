@@ -1,41 +1,45 @@
 import { MongoClient, ObjectId } from 'mongodb';
+import { uri, dev } from './credentials.js';
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 
 
-import { uri } from './credentials.js';
-
-const client = new MongoClient(uri);
-
-
+const PORT = 3030
+const app = express();
+app.use(cors());
+app.use(express.json());
+ 
 //connects to DB 'shelly'
-const db = client.db('shelly');
+// const client = new MongoClient(uri); // ONLINE
+const client = new MongoClient(dev); //OFFLINE
 
-//retrieves collection shellyProject from DB called shelly
-const shellyCollection = db.collection('item');
+const db = client.db('shelly');
+//----------------------------------------------------------
+
+//retrieves collection item from DB 
+const shellyCollection = db.collection('shelly');
 
 
 //retrieves one line from DB
-const shelly = await shellyCollection.findOne({});
-console.log(shelly);
+// export async function getAllFurniture(req, res) {
+//     const collection = await db.collection("startup-log").find().toArray()
+//     res.send(collection)
+//   }
 
-//retrieves collection movies from DB called shelly
-
-// const shellyCollection = db.collection('item');
-
-
-// const query = {
-//    item: "iPhone14ProMax"
+// ADD ONE
+// const chair = {
+//     name: 'Ergo Chair',
+//     brand: 'Autonomous',
+//     color: 'Grey',
+//     price: 369.00,
+//     warranty: '2 years',
 // }
-
-
-// //retrieves results from DB
-
-// const shelly = await shellyCollection.findOne(query);
-// console.log(shelly);
-
-//add new movie
-// const newShelly = {
-//     item: "iPhone10X",
+  
+// async function addOneItem(startup_log) {
+//     const res = await db.collection("startup_log").insertOne(startup_log);
+//     console.log(res);
 // }
- 
-// const result = await moviesCollection.insertOne(newShelly);
-// console.log("Result of insert", result);
+// addOneItem(chair);
+
+app.listen(PORT, () => console.log(`api running on port ${PORT}`));
