@@ -22,24 +22,24 @@ const shellyCollection = db.collection('shelly');
 
 
 //retrieves one line from DB
-// export async function getAllFurniture(req, res) {
-//     const collection = await db.collection("startup-log").find().toArray()
-//     res.send(collection)
+// export async function getAll(req, res) {
+//     const res = await db.collection("startup-log").find().toArray()
+//     res.send(res)
 //   }
 
 // ADD ONE
-// const chair = {
-//     name: 'Ergo Chair',
-//     brand: 'Autonomous',
-//     color: 'Grey',
-//     price: 369.00,
-//     warranty: '2 years',
-// }
+const item = {
+    name: 'Ergo Chair',
+    brand: 'Autonomous',
+    color: 'Blue',
+    price: 500.00,
+    warranty: '2 years',
+}
   
-// async function addOneItem(startup_log) {
-//     const res = await db.collection("startup_log").insertOne(startup_log);
-//     console.log(res);
-// }
-// addOneItem(chair);
+async function addOneItem(startup_log) {
+    const res = await db.collection("startup_log").insertOne(startup_log);
+    console.log(res);
+}
+addOneItem(item);
 
 app.listen(PORT, () => console.log(`api running on port ${PORT}`));
