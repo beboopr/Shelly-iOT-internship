@@ -1,5 +1,14 @@
 .App {
+  display: flex;
+  justify-content: space-between;
   text-align: center;
+  align-items: center;
+}
+
+.button{
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 .App-logo {

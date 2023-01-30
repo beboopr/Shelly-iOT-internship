@@ -2,6 +2,8 @@
 import './App.css';
 import axios from "axios";
 import { useState } from "react";
+import getClient from './services/client.js';
+import logo from './img/shellylogo.png';
 
 // export const getClient = () => {
 //   return axios.create({
@@ -30,7 +32,7 @@ function App() {
 
   return (
 <div className="App">
-  {/* <img src={logo} alt="logo" /> */}
+  <img src={logo} alt="logo" />
  <button className="button" onClick={getStatus} >DB Write/Retrive</button>
   <button className="button2" onClick={flipSwitch}>ON/OFF</button>
 </div>

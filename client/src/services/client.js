@@ -6,9 +6,9 @@ import { useState } from "react";
 //     baseURL: "http://localhost:3030",
 //   });
 // };
-const [deviceData, setDeviceData] = useState([]);
 
 export const getClient = () => {
+  const [deviceData, setDeviceData] = useState([]);
 
   const getStatus = () => {
     console.log("Button cliked");
@@ -22,10 +22,9 @@ export const getClient = () => {
       .catch(console.error);
   };
 
-  // const flipSwitch = () => {
-  //   axios.get("http://192.168.15.35/rpc/Switch.GetStatus?id=0")
-  // }
-
-}
+  const flipSwitch = () => {
+    axios.get("http://192.168.15.35/rpc/Switch.GetStatus?id=0");
+  };
+};
 
 export default getClient;
