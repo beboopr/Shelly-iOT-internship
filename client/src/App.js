@@ -1,38 +1,52 @@
+// import Device from './Data.js';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import Device from './Data.js';
-import { useEffect, useState} from 'react'
-import { getData } from "./services/device.js";
+import axios from "axios";
+import { useState } from "react";
+
+// export const getClient = () => {
+//   return axios.create({
+//     baseURL: "http://localhost:3030",
+//   });
+// };
 
 function App() {
-  const [deviceData, setDeviceData] = useState();
+  const [deviceData, setDeviceData] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      // You can await here
-      const response = await getData();
-      setDeviceData(response)
-      // ...
-    }
-    fetchData();
-  }, []);
-  console.log("front", deviceData)
- 
+  const getStatus = () => {
+    console.log("Button cliked");
+    axios
+      .get("http://localhost:3030")
+      .then((res) => {
+        console.log(res);
+        setDeviceData(res.data);
+      })
+      .then(console.log(deviceData))
+      .catch(console.error);
+  };
+
+  const flipSwitch = () => {
+    axios.get("");
+  };
+
   return (
-    <div className="App">
-      {deviceData ?(
-        <h3>{deviceData.voltage}</h3>
-      ): (
-        <h3>loading...</h3>
-      )}
-      
-    </div>
-  );
+<div className="App">
+  {/* <img src={logo} alt="logo" /> */}
+ <button className="button" onClick={getStatus} >DB Write/Retrive</button>
+  <button className="button2" onClick={flipSwitch}>ON/OFF</button>
+</div>
+
+// { deviceData ? (
+//   <div>
+//   <p>ID:{deviceData.id}</p>
+//   <p>Voltage:{deviceData.voltage}</p>
+//   <p></p>
+//   <p></p>
+//   <p></p>
+//   </div>
+  
+//   )
+// }
+)
 }
 
 export default App;
-
-{/* <Routes>
-  <Route path='/fetch' element={<Device />}>
-  </Route>
-</Routes> */}
