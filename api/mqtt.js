@@ -39,3 +39,5 @@ if(client.connected){
 // export MQTT_PORT=2022
 // export SHELLY_ID="shellypro4pm-f008d1d8b8b8" # The <shelly-id> of your device
 // mosquitto_sub -h ${MQTT_SERVER} -p ${MQTT_PORT} -t ${SHELLY_ID}/events/rpc
+
+
