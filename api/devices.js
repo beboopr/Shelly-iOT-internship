@@ -21,5 +21,6 @@ export async function toggleSwitch(req, res) {
 }
 export async function getDeviceData() {
   const data = await fetch("http://192.168.15.35/rpc/Switch.GetStatus?id=0");
+  // const data = await fetch("http://192.168.15.35/rpc/Switch.GetStatus?id=0"); //insert ip from home
   return data;
 }
